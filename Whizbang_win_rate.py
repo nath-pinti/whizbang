@@ -1,6 +1,6 @@
 #CONDITIONS needed to run this program:
-#Enter all Whizbang decks into deck tracker and start the name of each of them with 'Whizbang'
-#'DeckStats.xml' file (can be found at %AppData%\HearthstoneDeckTracker) must be copied into your python IDE directory
+#All Whizbang decks in HS deck tracker app must have their deck name start with 'Whizbang'
+#'DeckStats.xml' file (can be found at %AppData%\HearthstoneDeckTracker) must be copied into your python/IDE directory
 
 #Set up element tree to parse XML data
 import xml.etree.ElementTree as ET
