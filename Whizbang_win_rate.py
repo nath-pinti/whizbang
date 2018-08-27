@@ -8,7 +8,7 @@ tree = ET.parse('DeckStats.xml')
 root = tree.getroot()
 gameresults = list()
 
-#Finding games where the deck name starts with 'Whizbang' and appends win or loss result into list (winrate)
+#Finding games where the deck name starts with 'Whizbang' and appends win or loss result into list (gameresults)
 for deckname in root.iter('Game'):
     name = deckname.find('DeckName')
     if name.text.startswith('Whizbang'):
