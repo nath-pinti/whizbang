@@ -21,6 +21,6 @@ for outcome in gameresults:
     if outcome == 'Win':
         wins = wins + 1
 
-#Calculates winrate
+#Calculates winrate and prepares output
 whizbang_winrate = (wins/len(gameresults) * 100)
 print('Total Whizbang win rate: {}%'.format((round(whizbang_winrate, 2))),'({}/{})'.format(wins,len(gameresults)))
