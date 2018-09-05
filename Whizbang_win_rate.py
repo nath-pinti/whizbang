@@ -6,12 +6,12 @@
 import xml.etree.ElementTree as ET
 tree = ET.parse('DeckStats.xml')
 root = tree.getroot()
-gameresults = list()
 
 #Finding games where the deck name starts with 'Whizbang' and appends win or loss result into list (gameresults)
+gameresults = list()
 for deckname in root.iter('Game'):
-    name = deckname.find('DeckName')
-    if name.text.startswith('Whizbang'):
+    name = deckname.find('DeckName').text
+    if name.startswith('Whizbang'):
         result = deckname.find('Result').text
         gameresults.append(result)
 
@@ -19,11 +19,22 @@ for deckname in root.iter('Game'):
 wins = 0
 for outcome in gameresults:
     if outcome == 'Win':
-        wins = wins + 1
+        wins += 1
 
 #Calculates winrate and prepares output
 whizbang_winrate = (wins/len(gameresults) * 100)
-print('Total Whizbang win rate: {}%'.format((round(whizbang_winrate, 2))),'({}/{})'.format(wins,len(gameresults)))
+print('Total Whizbang win rate: {}%'.format((round(whizbang_winrate, 2))),'({}/{})'.format(wins, len(gameresults)))
 
-
-#test changes #1
+#Additional statistics (number of wins by class)
+classwins = dict()
+for deckname in root.iter('Game'):
+    name = deckname.find('DeckName').text
+    if name.startswith('Whizbang'):
+        result = deckname.find('Result').text
+        if result == 'Win':
+            playerclass = deckname.find('PlayerHero').text
+            if playerclass not in classwins:
+                classwins[playerclass] = 1
+            else:
+                classwins[playerclass] += 1
+print(classwins)
