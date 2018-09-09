@@ -25,7 +25,7 @@ for outcome in gameresults:
 whizbang_winrate = (wins/len(gameresults) * 100)
 print('Total Whizbang win rate: {}%'.format((round(whizbang_winrate, 2))),'({}/{})'.format(wins, len(gameresults)))
 
-#Additional statistics (number of wins by class)
+#Additional statistics (number of wins by class, sorted by #wins descending)
 classwins = dict()
 for deckname in root.iter('Game'):
     name = deckname.find('DeckName').text
@@ -37,4 +37,11 @@ for deckname in root.iter('Game'):
                 classwins[playerclass] = 1
             else:
                 classwins[playerclass] += 1
-print(classwins)
+
+classwins_sorted = list()
+for key, value in classwins.items():
+    classwins_sorted.append((value, key))
+classwins_sorted.sort(reverse = True)
+print('\nClass | Wins:')
+for key, value in classwins_sorted:
+    print(value, key)
