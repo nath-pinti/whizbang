@@ -38,7 +38,7 @@ for deckname in root.iter('Game'):
             else:
                 classwins[playerclass] += 1
 
-classwins_sorted = list()
+classwins_sorted = list()                   #Converts dict to list of tupules for sorting
 for key, value in classwins.items():
     classwins_sorted.append((value, key))
 classwins_sorted.sort(reverse = True)
