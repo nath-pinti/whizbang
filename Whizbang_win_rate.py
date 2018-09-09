@@ -42,6 +42,6 @@ classwins_sorted = list()
 for key, value in classwins.items():
     classwins_sorted.append((value, key))
 classwins_sorted.sort(reverse = True)
-print('\nClass | Wins:')
+print('\nClass', "."*3, 'Wins')
 for key, value in classwins_sorted:
-    print(value, key)
+    print(value, "."*(10-len(value)), key)
